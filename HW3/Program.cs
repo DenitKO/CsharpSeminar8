@@ -20,3 +20,55 @@
 
 // В произведении матриц АВ число строк равно числу строк матрицы А , а число столбцов равно числу столбцов матрицы В.
 
+void FillMatrixArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(0, 10);
+        }
+    }
+}
+
+void PrintMatrixArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int[,] summOfArrays(int[,] arrayA, int[,] arrayB)
+{
+    int[,] arrayC = new int[arrayA.GetLength(0), arrayA.GetLength(1)];
+    int[,] tempArray = new int[arrayA.GetLength(0), arrayA.GetLength(1)];
+    for (int i = 0; i < arrayA.GetLength(0); i++)
+    {
+        for (int j = 0; j < arrayA.GetLength(1); j++)
+        {
+            for (int k = 0; k < arrayA.GetLength(1); k++)
+            {
+                arrayC[i, j] += arrayA[i, k] * arrayB[k, j];
+            }
+        }
+    }
+    return arrayC;
+}
+
+int[,] matrixA = new int[3, 3];
+int[,] matrixB = new int[3, 3];
+int[,] matrixC = new int[3, 3];
+
+FillMatrixArray(matrixA);
+FillMatrixArray(matrixB);
+PrintMatrixArray(matrixA);
+Console.WriteLine();
+PrintMatrixArray(matrixB);
+Console.WriteLine();
+matrixC = summOfArrays(matrixA, matrixB);
+PrintMatrixArray(matrixC);
