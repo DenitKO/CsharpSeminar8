@@ -43,7 +43,7 @@ void HighestSumInRow(int[,] array)
             sumOfRow[i] = sumOfRow[i] + array[i, j];
         }
         if (i == 0) minSum = sumOfRow[0];
-        if (sumOfRow[i] < minSum) 
+        if (sumOfRow[i] < minSum)
         {
             minSum = sumOfRow[i];
             min = i;
